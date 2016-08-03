@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :fetch_task, only: [:show, :update]
+  before_action :fetch_task, only: [:show, :update, :destroy]
 
   def index
     @tasks = Task.all
@@ -16,6 +16,10 @@ class TasksController < ApplicationController
   def update
     @save_success = @task.update(task_params)
     render :create
+  end
+
+  def destroy
+    @task.destroy
   end
 
 private
